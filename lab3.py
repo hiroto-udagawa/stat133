@@ -82,7 +82,6 @@ def get_codons(dna):
 			output.append(dna[(3*i):3*(i+1)])	
 	return output
 
-print 
 
 
 
