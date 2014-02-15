@@ -17,7 +17,7 @@ def is_dna(dna):
 
 def is_rna(rna):
 	output = True
-	for i in dna:
+	for i in rna:
 		if i == 'A' or i == 'U' or i == "G" or i == 'C':
 			output = True
 		else:
