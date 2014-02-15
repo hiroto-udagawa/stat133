@@ -1,257 +1,96 @@
 dna = 'ATGATTTTTCCATCTTTAAGTGCGATACTGTTTTGT'
 dna_bases = ['A', 'C', 'G', 'T']
-rna_bases = ['A', 'C', 'G', 'U'] 
-basecomplement = {'A': 'T', 'C': 'G', 'T': 'A', 'G': 'C'} 
+rna_bases = ['A', 'C', 'G', 'U']
+basecomplement = {'A': 'T', 'C': 'G', 'T': 'A', 'G': 'C'}
 
 def is_dna(dna):
-    """
-    Checks whether a string is a DNA string.
+	output = True
+	for i in dna:
+		if i == 'A' or i == 'T' or i == "G" or i == 'C':
+			output = True
+		else:
+			output = False
+			break
+	
+	return output
 
-    Parameters
-    ----------
-    dna : string
-        A string (i.e., you can assume you get a string)
-
-    Returns
-    -------
-    out : bool
-        Returns True, if dna is a valid DNA string (i.e,
-        a string composed of the letters 'A', 'C', 'G', or
-        'T' (and False otherwise).
-
-    Hint
-    ----
-    You may want to iterate over the string checking each character.
-
-    Examples
-    --------
-    >>> is_dna('ATGATT')
-    True
-    >>> is_dna('ATGATU')
-    False
-    >>> is_dna('atgatt')
-    False
-    >>> is_dna('My grandMa')
-    False
-    """
-    return NotImplemented
 
 def is_rna(rna):
-    """
-    Checks whether a string is a DNA string.
-
-    Parameters
-    ----------
-    rna : string
-        A valid RNA string
-
-    Returns
-    -------
-    out : bool
-        Returns True, if rna is a valid RNA string (i.e,
-        a string composed of the letters 'A', 'C', 'G', or
-        'U' (and False otherwise).
-
-    Hint
-    ----
-    See is_dna above.
-
-    Examples
-    --------
-    >>> is_rna('ATGATT')
-    False
-    >>> is_rna('ATGATU')
-    False
-    >>> is_rna('atgatt')
-    False
-    >>> is_rna('AUGAUU')
-    True
-    >>> is_rna('CCCCCC')
-    True
-    """
-    return NotImplemented
-
+	output = True
+	for i in dna:
+		if i == 'A' or i == 'U' or i == "G" or i == 'C':
+			output = True
+		else:
+			output = False
+			break
+	
+	return output
+	
 def transcribe(dna):
-    """
-    Transcribes a DNA string into a RNA string.
-
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : string
-        The RNA string is identical to the DNA string that
-        it was transcribed from except all occurrences of
-        the letter 'T' are replaced with the letter 'U'
-
-    Hint
-    ----
-    You may want to iterate over the string building up a new string character
-    by character (use the '+' operator).
-    
-
-    Examples
-    --------
-    >>> transcribe('ATGATT')
-     'AUGAUU'
-    """
-    return NotImplemented
-
+	output = ''
+	for i in dna:
+		if i == 'A' or i == "G" or i == 'C':
+			output += i
+		elif i == 'T':
+			output += 'U'
+		else:
+			break
+	
+	return output
+	
 def reverse(dna):
-    """
-    Return the DNA string in reverse order.
-
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : string
-
-    Hint
-    ----
-    You may want to iterate over the string building up a new string character
-    by character (use the '+' operator appending to the front of the string).
-
-    Examples
-    --------
-    >>> reverse('ATGATT')
-    'TTAGTA'
-    """
-    return NotImplemented
-
+	output = ''
+	for i in dna:
+		if i == 'A' or i == "G" or i == 'C' or i == 'T':
+			output = i + output
+	
+	return output
+	
 def complement(dna):
-    """
-    Return the complementary DNA string.
-
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : string
-
-    Hint
-    ----
-    You may want to iterate over the string building up a new string character
-    by character.
-
-    Examples
-    --------
-    >>> complement('ATGATT')
-    'TACTAA'
-    """
-    return NotImplemented
-
+	output = ''
+	for i in dna:
+		output += basecomplement[i]
+	return output
+	
 def is_complement(strand1, strand2):
-    """
-    Return the complementary DNA string.
-
-    Parameters
-    ----------
-    strand1 : string
-        A valid DNA string
-    strand2 : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : bool
-
-    Hint
-    ----
-    You may want to use your complement function ...
-
-    Examples
-    --------
-    >>> is_complement('ATGATT', 'TACTAA')
-    True
-    >>> is_complement('ATGATT', 'TACTAT')
-    False
-    """
-    return NotImplemented
-
+	output = True
+	testStrand = complement(strand1)
+	if strand2 == testStrand:
+		output = True
+	else:
+		output = False
+	return output
+	
 def reversecomplement(dna):
-    """
-    Return the complement of the reverse of the DNA string.
-
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : string
-
-    Hint
-    ----
-    Use function composition with functions you already defined.
-
-    Examples
-    --------
-    >>> reversecomplement('TACTAA')
-    'TTAGTA'
-    """ 
-    return NotImplemented
-
+	flip = reverse(dna)
+	return complement(flip)
+	
 def gc_content(dna):
-    """
-    Return the proportion of Gs and Cs in the DNA string.
-
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
-
-    Returns
-    -------
-    out : float
-
-    Hint
-    ----
-    You may want to look over your lecture notes (i.e., the Algorithm nb).
-    But you should not just report counts.  It isn't necesary, but you
-    can use the len function to get the length of a string.
-
-    Examples
-    --------
-    >>> gc_content('TACTAA')
-    0.16666666666666666
-    """
-    return NotImplemented
+	counter = 0
+	for i in dna:
+		if i == 'C' or i == 'G':
+			counter += 1
+	output = counter/float(len(dna))
+	return output
 
 def get_codons(dna):
-    """
-    Return list of codons for the DNA string.
+	output = []
+	if len(dna)%3 != 0:
+		print "Error: the string is not a multiple of 3"
+	else:	
+		for i in range(len(dna)/3):
+			output.append(dna[(3*i):3*(i+1)])	
+	return output
 
-    Parameters
-    ----------
-    dna : string
-        A valid DNA string
+print is_dna(dna)	
+print is_rna(dna)
+print transcribe(dna)
+print reverse(dna)
+print complement(dna)
+print is_complement(dna,dna)
+print reversecomplement(dna)
+print gc_content(dna)
+print get_codons(dna)
 
-    Returns
-    -------
-    out : list
 
-    Hint
-    ----
-    You should check that the length of the string is divisible by 3
-    (the modulus operator may be helpful).  Then go through the string
-    grabbing three characters at time and appending them to a list.    
 
-    Examples
-    --------
-    >>> get_codons('TACTAA')
-    ['TAC', 'TAA']
-    >>> get_codons('TACTA')
-    Error: the string is not a multiple of 3.
-    """
-    return NotImplemented
