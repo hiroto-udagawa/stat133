@@ -82,15 +82,7 @@ def get_codons(dna):
 			output.append(dna[(3*i):3*(i+1)])	
 	return output
 
-print is_dna(dna)	
-print is_rna(dna)
-print transcribe(dna)
-print reverse(dna)
-print complement(dna)
-print is_complement(dna,dna)
-print reversecomplement(dna)
-print gc_content(dna)
-print get_codons(dna)
+print 
 
 
 
