@@ -43,7 +43,6 @@ def simulate_grades(class_size, max_scores=[100,100,100]):
     arr = arr.T
     return arr
 
-print simulate_grades(4, [5,5,5])	
 
 
 def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
@@ -76,9 +75,18 @@ def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
     >>> simulate_grade_df(4,{'M':5,'F':5,'HW':5}).shape == (4,3)
     True
     """
-    data = None
-    print data
-    return data
+    a = []
+    for key in grade_items:
+		a.append(grade_items[key])
+    arr = simulate_grades(class_size, a)
+    arr = arr.T
+    data = {'F':arr[0],
+    		'M': arr[1],
+    		'HW':arr[2],
+    		}
+    frame = DataFrame(data)
+    return frame
+
  
 print simulate_grade_df(4,{'M':5,'F':5,'HW':5})
 
