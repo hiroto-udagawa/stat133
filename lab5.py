@@ -87,8 +87,7 @@ def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
     frame = DataFrame(data)
     return frame
 
- 
-print simulate_grade_df(4,{'M':5,'F':5,'HW':5})
+
 
 class GradeBook(object):
     """A class encapsulating a pandas DataFrame and meant to store 
