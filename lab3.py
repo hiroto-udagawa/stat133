@@ -11,7 +11,6 @@ def is_dna(dna):
 		else:
 			output = False
 			break
-    
 	return output
 
 
@@ -23,9 +22,8 @@ def is_rna(rna):
 		else:
 			output = False
 			break
-	print rna
 	return output
-
+	
 def transcribe(dna):
 	output = ''
 	for i in dna:
@@ -35,23 +33,24 @@ def transcribe(dna):
 			output += 'U'
 		else:
 			break
-    
 	return output
-
+	
 def reverse(dna):
 	output = ''
 	for i in dna:
 		if i == 'A' or i == "G" or i == 'C' or i == 'T':
 			output = i + output
-    
 	return output
 
+	
+	return output
+	
 def complement(dna):
 	output = ''
 	for i in dna:
 		output += basecomplement[i]
 	return output
-
+	
 def is_complement(strand1, strand2):
 	output = True
 	testStrand = complement(strand1)
@@ -65,6 +64,11 @@ def reversecomplement(dna):
 	flip = reverse(dna)
 	return complement(flip)
 
+	
+def reversecomplement(dna):
+	flip = reverse(dna)
+	return complement(flip)
+	
 def gc_content(dna):
 	counter = 0
 	for i in dna:
@@ -77,7 +81,11 @@ def get_codons(dna):
 	output = []
 	if len(dna)%3 != 0:
 		print "Error: the string is not a multiple of 3"
-	else:
+	else:	
 		for i in range(len(dna)/3):
-			output.append(dna[(3*i):3*(i+1)])
+			output.append(dna[(3*i):3*(i+1)])	
 	return output
+
+
+
+
