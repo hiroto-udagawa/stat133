@@ -79,12 +79,9 @@ def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
     for key in grade_items:
 		a.append(grade_items[key])
     arr = simulate_grades(class_size, a)
-    arr = arr.T
-    data = {'F':arr[0],
-    		'M': arr[1],
-    		'HW':arr[2],
-    		}
-    frame = DataFrame(data)
+    characteristics = grade_items
+       
+    frame = DataFrame(arr, columns = characteristics)
     return frame
 
 
