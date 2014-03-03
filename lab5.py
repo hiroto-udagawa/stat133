@@ -204,7 +204,8 @@ class GradeBook(object):
         grades = []
         raw_sum = []
         for x in range(len(self.grade_arr)):
-        	self.grade_arr[x] = self.max_scores[x]*self.grade_arr[x]
+        	for y in range(len(self.grade_arr[x])):
+        		self.grade_arr[x][y] = self.max_scores[y]*self.grade_arr[x][y]
         	grades.append(self.grade_arr[x])
         for x in range(len(grades)):
         	for y in range(len(grades[x])):
@@ -213,10 +214,6 @@ class GradeBook(object):
         	
         self.total_grades = Series(raw_sum, index= self.student_ids)
         return self.total_grades.describe()
-
-
-
-
 
 if __name__ == "__main__":
     import doctest
