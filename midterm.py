@@ -53,9 +53,12 @@ def decision_rule(x, y, z):
     >>> decision_rule(False, False, False)
     False
     """
-    
-     
-    return NotImplemented 
+    if (x == True and y == True) or z == True:
+	return True
+    elif (x == False or y == False) and z == False:
+	return False
+    else:
+	return None     
 
 
 #---------------------------------------------------------------------------
@@ -86,8 +89,19 @@ def compare_string_length(x, y):
     >>> compare_string_length(True, 1)
     -1
     """
-
-    return NotImplemented        
+    x = str(x)
+    y = str(y)
+    length1 = len(x)
+    length2 = len(y)
+    if length1 > length2:
+	return -1
+    elif length2 > length1: 
+	return 1
+    elif length1 == length2:
+	return 0
+    else:
+	return None
+	       
 
 
 #---------------------------------------------------------------------------
@@ -115,9 +129,11 @@ def compute_grade(grades, k):
     >>> compute_grade([1,2,3,4], 3)
     4.0
     """
-    
-    return NotImplemented
-    
+    order = sorted(grades)
+    notdropped = order[k:]
+    final = sum(notdropped)/float(len(notdropped))
+    return final
+ 
 
 #---------------------------------------------------------------------------
 # QUESTION 4 - CLASSES (10 points)
@@ -175,11 +191,18 @@ class DNA(object):
         'spp-tpqspp-tpqspp-tpqspp-tpq'
         """
         
-        return NotImplemented
-        
-
-
-
+	output = []	
+	protein = ""
+	if len(self.dna)%3 != 0:
+		print "Error: the string is not a multiple of 3"
+	else:	
+		for i in range(len(self.dna)/3):
+			output.append(self.dna[(3*i):3*(i+1)])
+	for x in output:
+		protein += self.codon2amino[x]
+	self.protein = protein
+	return self.protein	
+	
     def __init__(self, dna):
         
         self.dna = dna
@@ -198,7 +221,6 @@ class DNA(object):
         'AGT':'s', 'CCA':'p', 'CCC':'p', 'TAA':'-'}
 
 
-    
     
 #---------------------------------------------------------------------------
 # DO NOT CHANGE WHAT'S BELOW
