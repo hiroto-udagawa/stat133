@@ -16,6 +16,10 @@
         "lab4": {
             "earned": 30, 
             "possible": 30
+        }, 
+        "lab5": {
+            "earned": 30, 
+            "possible": 30
         }
     }, 
     "login": "hiro722722", 

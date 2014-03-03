@@ -2,7 +2,7 @@
 #they may help you save time
 from numpy import array
 from numpy.random import rand
-from pandas import DataFrame
+from pandas import DataFrame, Series
 
 
 def simulate_grades(class_size, max_scores=[100,100,100]):
@@ -54,8 +54,12 @@ def simulate_grades(class_size, max_scores=[100,100,100]):
     >>> g[:,2].max() < 40
     True
     """
-    return NotImplemented
-
+    a = rand( len(max_scores), class_size)
+    arr = array(a, dtype = "float64")
+    for i in range(len(max_scores)):
+        arr[i] = arr[i] * max_scores[i]
+    arr = arr.T
+    return arr
 
 
 def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
@@ -88,9 +92,17 @@ def simulate_grade_df(class_size, grade_items={'F':100,'M':100,'HW':10}):
     >>> simulate_grade_df(4,{'M':5,'F':5,'HW':5}).shape == (4,3)
     True
     """
-    return NotImplemented
+    a = []
+    for key in grade_items:
+		a.append(grade_items[key])
+    arr = simulate_grades(class_size, a)
+    characteristics = grade_items
+       
+    frame = DataFrame(arr, columns = characteristics)
+    return frame
 
-print simulate_grade_df(50)
+
+
 
 class GradeBook(object):
     """A class encapsulating a pandas DataFrame and meant to store
@@ -143,7 +155,14 @@ class GradeBook(object):
         >>> a.max_scores[0] == 30
         True
         """
-        return NotImplemented
+        self.total_grades = None
+        self.letter_grades = None
+        self.max_scores = max_scores
+        self.student_ids = student_ids
+        self.item_list = item_list
+        self.grade_arr = grade_arr
+        self.raw_grades = DataFrame(data = grade_arr, index = student_ids, columns = item_list)
+        
 
     def compute_total_grades(self, item_weights=None, max_score=100):
         """
@@ -181,10 +200,25 @@ class GradeBook(object):
         >>> a.total_grades['34'] == 10
         True
         """
-        return NotImplemented
+        grades = []
+        raw_sum = []
+        for x in range(len(self.grade_arr)):
+        	self.grade_arr[x] = self.max_scores[x]*self.grade_arr[x]
+        	grades.append(self.grade_arr[x])
+        for x in range(len(grades)):
+        	for y in range(len(grades[x])):
+        		grades[x][y] = grades[x][y] * item_weights[y]
+        	raw_sum.append(sum(grades[x]))
+        	
+        self.total_grades = Series(raw_sum, index= self.student_ids)
+        return self.total_grades.describe()
 
+a = GradeBook(array([[5,5],[1,1]]),["22","34"],["F","M"],[10, 10])
+b = a.compute_total_grades([0.3, 0.7], 100)
+print b
+print len(b)
 
-
-if __name__ == "__main__":
+"""if __name__ == "__main__":
     import doctest
     doctest.testmod()
+    """
