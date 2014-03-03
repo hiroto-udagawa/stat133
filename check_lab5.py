@@ -69,4 +69,8 @@ score += check('a.total_grades["34"]', 10, 2)
 
 student['grades'][lab] = {'earned': score, 'possible': possible}
 logging.info("You got a %s out of %s.", str(score), str(possible))
+<<<<<<< HEAD
 save_grades(student, 'grades.json')
+=======
+save_grades(student, 'grades.json')
+>>>>>>> f212c5a39a27660f6b71e1f5f7d992d2b7600219

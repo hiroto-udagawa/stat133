@@ -98,16 +98,16 @@ class Cipher(object):
 
 	if self.mapping == "reverse":
 		self.key = self.alphabet[::-1]
-		
+
 	elif self.mapping == "rot13":
 		self.key =  self.alphabet[13:26] + self.alphabet[0:13]
-	
+
 	elif self.mapping == 'hybrid':
 		self.reversealpha = self.alphabet[::-1]
 		self.key =  self.reversealpha[12:26]+ self.reversealpha[0:12]	
-		
+
 	self.translator = string.maketrans(self.alphabet, self.key)
-		
+
 
     def isvalid(self, message):
         """
@@ -131,7 +131,7 @@ class Cipher(object):
 		return True
 	else:
 		return False
-		
+
     def encrypt(self, message):
 	"""
 	Encrypt the message
@@ -146,7 +146,7 @@ class Cipher(object):
         out : string
         
         """
-	
+
 	return message.translate(self.translator)
   
     def decrypt(self, message):

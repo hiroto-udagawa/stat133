@@ -23,7 +23,7 @@ def is_rna(rna):
 			output = False
 			break
 	return output
-	
+
 def transcribe(dna):
 	output = ''
 	for i in dna:
@@ -34,7 +34,7 @@ def transcribe(dna):
 		else:
 			break
 	return output
-	
+
 def reverse(dna):
 	output = ''
 	for i in dna:
@@ -42,15 +42,15 @@ def reverse(dna):
 			output = i + output
 	return output
 
-	
+
 	return output
-	
+
 def complement(dna):
 	output = ''
 	for i in dna:
 		output += basecomplement[i]
 	return output
-	
+
 def is_complement(strand1, strand2):
 	output = True
 	testStrand = complement(strand1)
@@ -64,11 +64,11 @@ def reversecomplement(dna):
 	flip = reverse(dna)
 	return complement(flip)
 
-	
+
 def reversecomplement(dna):
 	flip = reverse(dna)
 	return complement(flip)
-	
+
 def gc_content(dna):
 	counter = 0
 	for i in dna:
@@ -85,7 +85,3 @@ def get_codons(dna):
 		for i in range(len(dna)/3):
 			output.append(dna[(3*i):3*(i+1)])	
 	return output
-
-
-
-

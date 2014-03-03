@@ -164,6 +164,7 @@ class GradeBook(object):
         self.raw_grades = DataFrame(data = grade_arr, index = student_ids, columns = item_list)
         
 
+
     def compute_total_grades(self, item_weights=None, max_score=100):
         """
         Compute student total class grades as a weighted average of the column in self.raw_grades
@@ -213,12 +214,11 @@ class GradeBook(object):
         self.total_grades = Series(raw_sum, index= self.student_ids)
         return self.total_grades.describe()
 
-a = GradeBook(array([[5,5],[1,1]]),["22","34"],["F","M"],[10, 10])
-b = a.compute_total_grades([0.3, 0.7], 100)
-print b
-print len(b)
 
-"""if __name__ == "__main__":
+
+
+
+if __name__ == "__main__":
     import doctest
     doctest.testmod()
-    """
+
