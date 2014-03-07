@@ -11,18 +11,36 @@
         }, 
         "lab3": {
             "earned": 30, 
+            "hash": "60fcab371d60d82b5ae81c0ca6da3e998b0f4b82", 
+            "note": "", 
+            "penalty": 0, 
             "possible": 30
         }, 
         "lab4": {
             "earned": 30, 
+            "hash": "60fcab371d60d82b5ae81c0ca6da3e998b0f4b82", 
+            "note": "", 
+            "penalty": 0, 
             "possible": 30
         }, 
         "lab5": {
             "earned": 30, 
+            "hash": "60fcab371d60d82b5ae81c0ca6da3e998b0f4b82", 
+            "note": "", 
+            "penalty": 0, 
             "possible": 30
+        }, 
+        "midterm": {
+            "earned": 40, 
+            "hash": "60fcab371d60d82b5ae81c0ca6da3e998b0f4b82", 
+            "note": "", 
+            "penalty": 0, 
+            "possible": 40
         }
     }, 
+    "lab": 3, 
     "login": "hiro722722", 
     "name": "Hiroto Udagawa", 
+    "status": "enrolled", 
     "url": "git@github.com:hiro722722/stat133.git"
 }
