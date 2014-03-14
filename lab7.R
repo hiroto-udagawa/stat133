@@ -36,8 +36,12 @@ createVector1  = function(n) {
     # Implement this function body so that it returns
     # the vector (1,..., n-1, n, n-1, n-2, ..., 1), where n is 
     # a natural number (1,2,3,...) passed as the function argument.
-
-    "NotImplemented"
+    if(n > 1){
+	up = c(1:n)
+	down = c((n-1):1)
+	return(c(up,down))}
+	else{
+	return(c(1))}
 }
 
 tryCatch ( checkEquals(createVector1(3), c(1,2,3,2,1)), 
@@ -59,8 +63,11 @@ createVector2  = function(a,b,c,k,l,m) {
     # the vector (a,a,...,a,b,b,...,b,c,c,...c), where a is
     # repeated k times, b is repeated l times, and c is repeated 
     # m times. 
-
-    "NotImplemented"
+	repeat_a = rep(c(a),k)
+	repeat_b = rep(c(b),l)
+	repeat_c = rep(c(c),m)
+	return( c(repeat_a,repeat_b,repeat_c))
+	
 }
 
 # Tests:
@@ -101,8 +108,13 @@ createVector3  = function(label, n) {
     # Implement this function body so that it returns
     # the character vector (label 1, label 2, ..., label n), where
     # label is a string and n is an integer.
-
-    "NotImplemented"
+    
+    final = c()
+    for(x in 1:n){
+        add = paste(label, x, sep=" ")
+    	final = c(final, add)}
+    return (final)
+    	
 }
 
 # Tests:
@@ -146,9 +158,12 @@ createVector4  = function(a, b, s) {
     # (exp(a)cos(a), exp(a+s)cos(a+s), exp(a+2s)cos(a+2s),...,exp(a+ns)cos(a+ns))
     #    where a < b, a+ns <= b, and a+(n+1)s > b
     
-    "NotImplemented"
-}
+    final = seq(a,b,s)
+    final= exp(final)*cos(final)    
 
+    return(final)
+    
+}
 # Tests:
 tryCatch ( 
           checkEquals(
