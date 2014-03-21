@@ -52,8 +52,13 @@ simulateGradeBook  = function(mStudents, nItems, scoreRange=c(0,100)){
     # (3) The returned grades should not have any decimal part
 
 	x = matrix(rnorm(mStudents*nItems, mean=50, sd=10),mStudents)
+	for(i in 1:nrow(x)){
 	round(x)
-					
+		for( y in 1:ncol(x)){
+			if (x[i][y]>=scoreRange[2]){
+				x[i][y] = scoreRange[2]}
+			else if (x[i][y]<= scoreRange[1]){
+				x[i][y] = scoreRange[1]}					
 	
 	return (x)
     	
