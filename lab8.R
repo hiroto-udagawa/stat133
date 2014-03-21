@@ -51,7 +51,8 @@ simulateGradeBook  = function(mStudents, nItems, scoreRange=c(0,100)){
     # normally distributed with mean 50 and variance 10 
     # (3) The returned grades should not have any decimal part
 
-	x = matrix(rnorm(mStudent*nItems, mean=50, sd=10),mStudents)
+	x = matrix(rnorm(mStudents*nItems, mean=50, sd=10),mStudents)
+	round(x)
 					
 	
 	return (x)
@@ -108,8 +109,17 @@ solveLinEq  = function(A, b) {
     warning1 = "I don't know how to solve for matrices with %d rows and %d columns"
     warning2 = "The matrix is not invertible: too tough for me!"
     warning3 = "The vector has length %d, but the matrix is a %d x %d matrix: impossible problem!"
-    "NotImplemented"
-
+    
+  	 if (det(A)!=0){
+    	return (warning2)}
+    
+    else if(size(A)!= size(A)){
+    	return((warning1),nrow(A),ncol(A))}
+    	
+	else if(ncol(A)!=length(b)){
+    		return(sprintf(warning3,length(b), ncol(A),nrow(A)))}  
+    else	 
+    	return(solve(A)%*%t(b)) 
     	
 # Tests:
 A = diag(2)
