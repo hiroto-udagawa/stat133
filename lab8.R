@@ -51,7 +51,11 @@ simulateGradeBook  = function(mStudents, nItems, scoreRange=c(0,100)){
     # normally distributed with mean 50 and variance 10 
     # (3) The returned grades should not have any decimal part
 
-    "NotImplemented"
+	x = matrix(rnorm(mStudent*nItems, mean=50, sd=10),mStudents)
+					
+	
+	return (x)
+    	
 }
 
 tryCatch(
@@ -105,8 +109,8 @@ solveLinEq  = function(A, b) {
     warning2 = "The matrix is not invertible: too tough for me!"
     warning3 = "The vector has length %d, but the matrix is a %d x %d matrix: impossible problem!"
     "NotImplemented"
-}
 
+    	
 # Tests:
 A = diag(2)
 b = c(1,0)
