@@ -43,7 +43,7 @@ keepDoubleQuotesOnly = function(theString){
 
 source('test.R')
 
-testInput  = c('this "line" has "quoted" "strings"',
+testInput  = c('this "line has "quoted" "strings"',
                'there\'s "one" quoted string',
                '"one" more to follow "two"',
                'Here\'s a quote "',

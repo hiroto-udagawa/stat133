@@ -32,6 +32,8 @@ extractSecuNum  = function(text){
 	text = gsub('\\?','',text)
 	text = gsub(' ','',text)
 	text = text[nchar(text)==11]
+	check = gsub('-','',text)
+	text = text[as.numeric(check) <100000000]
 	return(text)
 	
 
