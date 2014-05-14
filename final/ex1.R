@@ -24,7 +24,18 @@
 
 extractSecuNum  = function(text){
 # Write your code here!
-	gsub('[a-z]','',text)	
+	text = gsub('[a-z]','', text)
+	text = gsub('[A-Z]','',text)
+	text = gsub('\\.','',text)
+	text = gsub('\\,','',text)
+	text = gsub('\\!','',text)
+	text = gsub('\\?','',text)
+	text = gsub(' ','',text)
+	text = text[nchar(text)==11]
+	return(text)
+	
+
+
 	
 
 

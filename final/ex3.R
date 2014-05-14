@@ -25,7 +25,7 @@
 
 keepDoubleQuotesOnly = function(theString){
 # Write your code here 
-	count = gsub('[^..."]','',theString)
+	count = gsub('[^...\"]','',theString)
 	theString = theString[nchar(count)>=4]
 
 	return(theString)
