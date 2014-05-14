@@ -25,11 +25,24 @@ rmMultipleBlanks = function(stringsWithBlanks){
 # Write your code here 
 	stringsWithBlanks = sub('^ *','',stringsWithBlanks)
 	stringsWithBlanks = sub(' *$','',stringsWithBlanks)
+	
 	stringsWithBlanks= sub('^\n*','',stringsWithBlanks)
 	stringsWithBlanks= sub('\n*$','',stringsWithBlanks)
+	
 	stringsWithBlanks = sub('^ *','',stringsWithBlanks)
+	stringsWithBlanks = sub(' *$','',stringsWithBlanks)
+	
 	stringsWithBlanks= sub('^\t*','',stringsWithBlanks)
 	stringsWithBlanks= sub('\t*$','',stringsWithBlanks)
+	
+	stringsWithBlanks = sub('^ *','',stringsWithBlanks)
+	stringsWithBlanks = sub(' *$','',stringsWithBlanks)
+
+	stringsWithBlanks= sub('^\n*','',stringsWithBlanks)
+	stringsWithBlanks= sub('\n*$','',stringsWithBlanks)
+	
+	stringsWithBlanks = sub('^ *','',stringsWithBlanks)
+	stringsWithBlanks = sub(' *$','',stringsWithBlanks)
 	return(stringsWithBlanks)
 
 
@@ -51,6 +64,7 @@ rmMultipleBlanks = function(stringsWithBlanks){
 # --------------------------------------------------------------
 source('test.R')
 
+testInput = c("  hello, world  ", "\t\t \n\n Stat 133 \n \t\t")
 functionOutput = rmMultipleBlanks(testInput) 
 correctOutput  = c("hello, world", "Stat 133")
 
