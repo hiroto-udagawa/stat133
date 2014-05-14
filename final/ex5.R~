@@ -68,7 +68,9 @@ dfDiagnosis  = function(data, naRow, naCol){
 	object = list(rawData = data.frame(data),
 			thresholds = c(naRow, naCol),
 			badCols = badCols,
-			badRows=badRows)
+			badRows=badRows,
+			outliers = c(),
+			cleanData= data.frame(data)
 	class(object)='dfDiagnosis'
 
 return(object)
