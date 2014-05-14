@@ -23,7 +23,7 @@
 
 rmMultipleBlanks = function(stringsWithBlanks){
 # Write your code here 
-	clean.blanks = sub('^
+
 
 
 
