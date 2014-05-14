@@ -17,7 +17,7 @@
 
 sumFactor  = function(aFactor){
 # Write your code here!
-	return (sum(as.integer(as.character(aFactor))))
+	return (sum(as.numeric(aFactor)))
 
 
 
